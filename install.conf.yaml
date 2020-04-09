@@ -2,14 +2,17 @@
     link:
         relink: true
         create: true
-# - create:
-    # - ~/Downloads/testtt
-
 - link:
     ~/.tmux.conf: link/tmux/tmux.conf
     ~/.vim: link/vim
-    ~/.gitignore_global: link/gitignore_global
-    ~/.git_template: link/git_template
+    ~/.gitignore_global: link/git_configs/gitignore_global
+    ~/.git_template: link/git_configs/git_template
 
 - shell:
+    -
+      command: link/git_configs/install -i
+      stdin: true
+      stdout: true
+      description: Setting up git
     - [git submodule update --init --recursive, Installing submodules]
+    - [bash_config/install, Installing bash configurations]

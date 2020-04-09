@@ -3,5 +3,8 @@
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
 [submodule "vim"]
-	path = vim
+	path = link/vim
 	url = https://github.com/ashkan2200/vim.git
+[submodule "tmux"]
+	path = link/tmux
+	url = https://github.com/ashkan2200/tmux

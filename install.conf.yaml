@@ -1,12 +1,15 @@
 - defaults:
     link:
         relink: true
+        create: true
 # - create:
     # - ~/Downloads/testtt
 
 - link:
-    # ~/.tmux.conf
-    ~/.vim: vim
+    ~/.tmux.conf: link/tmux/tmux.conf
+    ~/.vim: link/vim
+    ~/.gitignore_global: link/gitignore_global
+    ~/.git_template: link/git_template
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

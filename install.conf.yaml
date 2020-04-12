@@ -1,3 +1,6 @@
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
 - defaults:
     link:
         relink: true
@@ -9,10 +12,9 @@
     ~/.git_template: link/git_configs/git_template
 
 - shell:
+    - [bash_config/install, Installing bash configurations]
     -
       command: link/git_configs/install -i
       stdin: true
       stdout: true
       description: Setting up git
-    - [git submodule update --init --recursive, Installing submodules]
-    - [bash_config/install, Installing bash configurations]

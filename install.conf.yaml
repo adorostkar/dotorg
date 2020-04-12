@@ -12,7 +12,7 @@
     ~/.git_template: link/git_configs/git_template
 
 - shell:
-    - [bash_config/install, Installing bash configurations]
+    - [bash_config/install -i, Installing bash configurations]
     -
       command: link/git_configs/install -i
       stdin: true

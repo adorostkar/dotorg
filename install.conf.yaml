@@ -12,12 +12,12 @@
       command: git submodule update --init --recursive
       description: Installing submodules
     -
-      command: pkg/bash_config/install -i
+      command: pkg/bash_config/install -i -l
       stdin: true
       stdout: true
       description: Installing bash configurations
     -
-      command: pkg/git_configs/install
+      command: pkg/git_configs/install -l
       stdin: true
       stdout: true
       description: Setting up git
@@ -25,6 +25,4 @@
 - link:
     ~/.tmux.conf: pkg/tmux/tmux.conf
     ~/.vim: pkg/vim
-    ~/.gitignore_global: pkg/git_configs/gitignore_global
-    ~/.git_template: pkg/git_configs/git_template
 

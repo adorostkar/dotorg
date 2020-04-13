@@ -3,6 +3,10 @@
         relink: true
         create: true
 
+- create:
+    - ~/.cache
+    - ~/.local
+
 - shell:
     -
       command: git submodule update --init --recursive

@@ -3,15 +3,15 @@
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
 [submodule "vim"]
-	path = link/vim
+	path = pkg/vim
 	url = https://github.com/ashkan2200/vim.git
     ignore = dirty
 [submodule "tmux"]
-	path = link/tmux
+	path = pkg/tmux
 	url = https://github.com/ashkan2200/tmux
 [submodule "link/git_configs"]
-	path = link/git_configs
+	path = pkg/git_configs
 	url = https://github.com/ashkan2200/git_configs
 [submodule "bash_config"]
-	path = bash_config
+	path = pkg/bash_config
 	url = https://github.com/ashkan2200/bash_config

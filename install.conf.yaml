@@ -27,8 +27,12 @@
     -
       # options
       # -l: Link git_template and gitignore_global
+      # -c: Copy git_template and gitignore_global
       # -n: name to be used as author for git
       # -e: email to be used as author email
+      # --ignore-update : Don't update name and email before copy.
+      #                     With this option the user should change
+      #                     name after the script is finished
       command: pkg/git_configs/install -l
       # keep true if you wish interactive name/email input
       stdin: true

@@ -1,1 +1,89 @@
-# My dotfiles managed by dotbot
+# My initialization and backup script.
+
+This repository build up on the work done anishathalye/dotbot
+
+# Dot Organizer
+
+Multi platform dot organizer
+
+## How the "dotorg" command works
+
+When dotorg is called a few things happen
+
+1. Check if `git` and `python` are installed and fail otherwise
+2. This repo is cloned into your user directory, under `~/.dotorg`.
+3. You are asked to update the install script if you wish to
+4. dotbot is run with the modified install
+
+### Other subdirectories
+
+* The `/pkg` directory has all packages that are linked or installed. All
+  subdirectories are submodules and can be used by itself if needed.
+
+## Installation
+
+### OS X Notes
+
+You need to have
+[XCode](https://developer.apple.com/downloads/index.action?=xcode) or, at the
+very minimum, the [XCode Command Line
+Tools](https://developer.apple.com/downloads/index.action?=command%20line%20tools),
+which are available as a much smaller download.
+
+The easiest way to install the XCode Command Line Tools in OSX 10.9+
+pen up a terminal, type `xcode-select --install` and [follow the
+prompts](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/).
+
+### Ubuntu Notes
+
+Either way, you should at least update/upgrade APT with `sudo apt-get -qq update
+&& sudo apt-get -qq dist-upgrade` first.
+
+### Actual installation (for you)
+
+1. Fork this repo
+2. Open a terminal/shell and do this (change `ashkan2200` and `master` as
+appropriate):
+
+#### Ubuntu
+
+```sh
+export DOTORG_GH_USER=ashkan2200
+export DOTORG_GH_BRANCH=master
+bash -c "$(wget -qO-
+https://raw.github.com/$DOTFILES_GH_USER/dotorg/$DOTFILES_GH_BRANCH/setup)"
+&& source ~/.bashrc
+```
+
+#### macOS
+
+```sh
+export DOTORG_GH_USER=ashkan2200
+export DOTORG_GH_BRANCH=master
+bash -c "$(curl -fsSL
+https://raw.github.com/$DOTORG_GH_USER/dotorg/$DOTORG_GH_BRANCH/setup)"
+&& source ~/.bashrc
+```
+### Actual installation (for me)
+
+#### Ubuntu
+
+```sh
+bash -c "$(wget -qO- https://bit.ly/ashkandot)" && source ~/.bashrc
+```
+
+#### macOS
+
+```sh
+bash -c "$(curl -fsSL https://bit.ly/ashkandot)" && source ~/.bashrc
+```
+
+# Submodules
+The following submodules are in the repo. The information for each can be seen
+in the corresponding repo.
+
+https://github.com/anishathalye/dotbot
+https://github.com/ashkan2200/vim.git
+https://github.com/ashkan2200/tmux
+https://github.com/ashkan2200/git_configs
+https://github.com/ashkan2200/bash_config

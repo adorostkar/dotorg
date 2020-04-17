@@ -9,15 +9,28 @@
 
 - shell:
     -
+      # options
+      # --remote -> update submodules to latest
       command: git submodule update --init --recursive
       description: Installing submodules
     -
+      # options
+      # -i  -> initialize terminal with needed commands,
+      #           usually done the first time
+      # -l  -> Link caches to .cache folder
+      #
       command: pkg/bash_config/install -i -l
+      # Keep true if you wish to see the output and input
       stdin: true
       stdout: true
       description: Installing bash configurations
     -
+      # options
+      # -l: Link git_template and gitignore_global
+      # -n: name to be used as author for git
+      # -e: email to be used as author email
       command: pkg/git_configs/install -l
+      # keep true if you wish interactive name/email input
       stdin: true
       stdout: true
       description: Setting up git

@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+echo 'DotOrg Dotfile Organizer - Ali "Ashkan" Dorostkar'
+
+if [[ "$1" == "-h" || "$1" == "--help" ]];
+then
+cat<<HELP
+Usage: $(basename "$0")
+See the README for documentation.
+https://github.com/ashkan2200/dotfiles
+HELP
+exit 0;
+fi
+###########################################
+# GENERAL PURPOSE EXPORTED VARS / FUNCTIONS
+###########################################
+
+DOTORG=${DOTORG:-~/.dotorg}
+DOTORG_GH_BRANCH=${DOTORG_GH_BRANCH:-master}
+DOTORG_GH_USER=${DOTORG_GH_USER:-ashkan2200}
+
+function cleanup {
+    unset DOTORG_SCRIPT_RUNNING
+    unset prompt_delay
+}
+trap cleanup EXIT
+
+# Logging stuff.
+MARK_OK="\033[1;32m✔\033[0m"
+MARK_NOK="\033[1;31m✖\033[0m"
+MARK_DO="\033[1;34m➜\033[0m"
+
+function e_header()   { printf "\n\033[1m$@\033[0m\n"; }
+function e_success()  { printf " %b $@\n" $MARK_OK; }
+function e_error()    { printf " %b $@\n" $MARK_NOK; }
+function e_arrow()    { printf " %b $@\n" $MARK_DO; }
+
+SUDO=$(type -P sudo)
+if [[ "$SUDO" == "" ]]
+then
+    e_arrow "No sudo found, trying to continue without it"
+fi
+
+
+# Set the prompt delay to be longer for the very first run.
+export prompt_delay=5 is_dotorg_bin || prompt_delay=15
+
+ABORT=0
+# Ensure that we can actually, like, compile anything.
+if [[ ! "$(type -P gcc)" ]]; then
+    e_error "Git should be installed"
+    ABORT=1
+else
+    e_success "Git is installed"
+fi
+
+if [[ ! "$(type -P python)" ]]; then
+    e_error "Python should be installed"
+    ABORT=1
+else
+    e_success "Python is installed"
+fi
+
+if [ $ABORT -eq 1 ];then
+    e_error "can't proceed with the setup, aborting!"
+    exit 1
+fi
+
+
+# Initialize.
+if [[ ! -d $DOTORG ]]; then
+	# Dotorg directory doesn't exist? Clone it!
+	e_arrow "Downloading to $DOTORG"
+	git clone --branch ${DOTORG_GH_BRANCH} --recursive \
+		git://github.com/${DOTORG_GH_USER}/dotorg.git $DOTORG
+	cd $DOTORG
+else
+  e_success "Already installed at $DOTORG"
+  exit 0
+fi
+
+
+SETUPEDITOR=${EDITOR:-${VISUAL:-vi}}
+read -t $prompt_delay -n 1 -sp "Proceed with the default complete setup? Press
+ENTER or wait $prompt_delay seconds to continue, or press any other key to edit."
+exitcode=$?
+echo ""
+# if the menu should be edited then show edit options
+CONFIGFILE="install.conf.yaml"
+if [[ "$exitcode" == 0 && "$REPLY" ]]; then
+    e_arrow "Using $SETUPEDITOR"
+    # cp $DOTORG/install.conf.yaml $DOTORG/custom.conf.yaml
+    cp $CONFIGFILE /tmp/custom.conf.yaml
+    $SETUPEDITOR  /tmp/custom.conf.yaml
+    CONFIGFILE="/tmp/custom.conf.yaml"
+    e_arrow "Using custom config file"
+fi 1>&2
+
+e_arrow "Starting setup"
+./install -c $CONFIGFILE
+

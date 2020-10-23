@@ -47,7 +47,7 @@ export prompt_delay=5 is_dotorg_bin || prompt_delay=15
 
 ABORT=0
 # Ensure that we can actually, like, compile anything.
-if [[ ! "$(type -P gcc)" ]]; then
+if [[ ! "$(type -P git)" ]]; then
     e_error "Git should be installed"
     ABORT=1
 else

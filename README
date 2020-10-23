@@ -51,7 +51,7 @@ appropriate):
 export DOTORG_GH_USER=ashkan2200
 export DOTORG_GH_BRANCH=master
 bash -c "$(wget -qO-
-https://raw.github.com/$DOTFILES_GH_USER/dotorg/$DOTFILES_GH_BRANCH/setup)"
+https://raw.github.com/$DOTORG_GH_USER/dotorg/$DOTORG_GH_BRANCH/setup)"
 && source ~/.bashrc
 ```
 

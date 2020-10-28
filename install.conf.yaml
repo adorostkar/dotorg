@@ -6,6 +6,7 @@
 - create:
     - ~/.cache
     - ~/.local
+    - ~/.tmux
 
 - shell:
     -
@@ -41,5 +42,6 @@
 
 - link:
     ~/.tmux.conf: pkg/tmux/tmux.conf
+    ~/.tmux/plugins: pkg/tmux/plugins
     ~/.vim: pkg/vim
 

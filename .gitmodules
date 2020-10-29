@@ -18,3 +18,7 @@
 	path = pkg/bash_config
 	url = https://github.com/ashkan2200/bash_config
 	branch = master
+[submodule "pkg/mywiki"]
+	path = pkg/mywiki
+	url = git@github.com:ashkan2200/mywiki.git
+	branch = main

@@ -44,4 +44,5 @@
     ~/.tmux.conf: pkg/tmux/tmux.conf
     ~/.tmux/plugins: pkg/tmux/plugins
     ~/.vim: pkg/vim
+    ~/vimwiki: pkg/mywiki
 

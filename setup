@@ -54,8 +54,8 @@ else
     e_success "Git is installed"
 fi
 
-if [[ ! "$(type -P python)" ]]; then
-    e_error "Python should be installed"
+if [[ ! "$(type -P python3)" ]]; then
+    e_error "Python3 should be installed"
     ABORT=1
 else
     e_success "Python is installed"

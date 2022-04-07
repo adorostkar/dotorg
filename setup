@@ -7,7 +7,7 @@ then
 cat<<HELP
 Usage: $(basename "$0")
 See the README for documentation.
-https://github.com/ashkan2200/dotfiles
+https://github.com/adorostkar/dotfiles
 HELP
 exit 0;
 fi
@@ -17,7 +17,7 @@ fi
 
 DOTORG=${DOTORG:-~/.dotorg}
 DOTORG_GH_BRANCH=${DOTORG_GH_BRANCH:-master}
-DOTORG_GH_USER=${DOTORG_GH_USER:-ashkan2200}
+DOTORG_GH_USER=${DOTORG_GH_USER:-adorostkar}
 
 function cleanup {
     unset DOTORG_SCRIPT_RUNNING
